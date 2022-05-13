@@ -1,4 +1,4 @@
-# Social Platform
+# Social Platform (Still ongoing development)
 Fullstack Social Platform using **Typescript**, **React**, **NodeJS**, and **GraphQL**.
 
 # Tech Stack
