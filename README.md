@@ -11,5 +11,5 @@ Fullstack Social Platform using **Typescript**, **React**, **NodeJS**, and **Gra
 * URQL (GraphQL client)
 * Node.js (API server)
 * PostgreSQL (Database)
-* TypeORM (ORM)
+* MikroORM (ORM)
 * Redis (Sessions Data)
