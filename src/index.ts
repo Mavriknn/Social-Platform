@@ -60,5 +60,3 @@ const main = async () => {
   });
 };
 main();
-
-test;
