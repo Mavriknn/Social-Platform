@@ -1,6 +1,8 @@
 import React from "react";
 import { Form, Formik } from "formik";
 import {
+  Box,
+  Button,
   FormControl,
   FormErrorMessage,
   FormLabel,
@@ -20,19 +22,29 @@ export const Register: React.FC<registerProps> = ({}) => {
           console.log(values);
         }}
       >
-        {({ values, handleChange }) => (
+        {({ isSubmitting }) => (
           <Form>
             <InputField
               name="username"
               placeholder="username"
               lable="Username"
             />
-            <InputField
-              name="password"
-              placeholder="password"
-              lable="Password"
-              type="password"
-            />
+            <Box mt={4}>
+              <InputField
+                name="password"
+                placeholder="password"
+                lable="Password"
+                type="password"
+              />
+            </Box>
+            <Button
+              mt={4}
+              type="submit"
+              isLoading={isSubmitting}
+              colorScheme="teal"
+            >
+              Register
+            </Button>
           </Form>
         )}
       </Formik>
