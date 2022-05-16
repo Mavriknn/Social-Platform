@@ -39,10 +39,21 @@ class UserResponse {
 
 @Resolver()
 export class UserResolver {
+  @Query(() => User, { nullable: true })
+  async me(@Ctx() { req, em }: MyContext) {
+    // You are not loged in
+    if (!req.session.userId) {
+      return null;
+    }
+
+    const user = await em.findOne(User, { id: req.session.userId });
+    return user;
+  }
+
   @Mutation(() => UserResponse)
   async register(
     @Arg("input") input: UsernamePasswordInput,
-    @Ctx() { em }: MyContext
+    @Ctx() { em, req }: MyContext
   ): Promise<UserResponse> {
     if (input.username.length <= 2) {
       return {
@@ -77,7 +88,7 @@ export class UserResolver {
       await em.persistAndFlush(user);
     } catch (err) {
       if (err.code === "23505") {
-        //|| err.detail.includes("already exists")) {
+        // || err.detail.includes("already exists")) {
         return {
           errors: [
             {
@@ -88,6 +99,11 @@ export class UserResolver {
         };
       }
     }
+    // store user id session
+    // this will set cookie on the user
+    // keep them logged in
+    req.session.userId = user.id;
+
     return { user };
   }
 
