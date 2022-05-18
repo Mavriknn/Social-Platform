@@ -1,18 +1,10 @@
 import React from "react";
 import { Form, Formik } from "formik";
-import {
-  Box,
-  Button,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Input,
-} from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import { Wrapper } from "../components/Wrapper";
 import { InputField } from "../components/InputField";
-import { useMutation } from "urql";
 import { useRegisterMutation } from "../generated/graphql";
-import { toErrorMap } from "../utils/toErrormap";
+import { toErrorMap } from "../utils/toErrorMap";
 import { useRouter } from "next/router";
 
 interface registerProps {}
